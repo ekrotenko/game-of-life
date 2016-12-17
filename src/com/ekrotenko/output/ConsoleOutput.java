@@ -7,10 +7,10 @@ import com.ekrotenko.Core.Field;
  */
 public class ConsoleOutput implements FieldOutput {
 
-    public void sendField(Field field){
-        for (int rowId =0; rowId<field.getColumnSize(); rowId++) {
-            for (int colId =0; colId<field.getRowSize(); colId++) {
-                if (field.getState(rowId,colId)) {
+    public void sendField(Field field) {
+        for (int rowId = 0; rowId < field.getColumnSize(); rowId++) {
+            for (int colId = 0; colId < field.getRowSize(); colId++) {
+                if (field.getState(rowId, colId)) {
                     System.out.print("x ");
                 } else
                     System.out.print(". ");

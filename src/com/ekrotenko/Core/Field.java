@@ -46,7 +46,7 @@ public class Field {
         return this.fieldArray[rowId][colId];
     }
 
-    public int getNeighborsCount(int rowID, int columnID) {
+    private int getNeighborsCount(int rowID, int columnID) {
 
         int count = 0;
         int rBorInd, cBorInd;
@@ -65,8 +65,8 @@ public class Field {
     }
 
     private void changeStateOfCell(int rowID, int columnID, boolean[][] tmpField) {
-        int neibors = getNeighborsCount(rowID, columnID);
-        tmpField[rowID][columnID]=((fieldArray[rowID][columnID]&&neibors==2)||neibors==3);
+        int neighbors = getNeighborsCount(rowID, columnID);
+        tmpField[rowID][columnID]=((fieldArray[rowID][columnID]&&neighbors==2)||neighbors==3);
         //tmpField[rowID][columnID]=(field[rowID][columnID]&&!(neibors < 2 || neibors > 3 ))||(!field[rowID][columnID]&&neibors == 3);
         /*if (field[rowID][columnID]) {
             if (!(neibors < 2 || neibors > 3 )) {
