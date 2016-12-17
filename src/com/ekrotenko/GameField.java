@@ -1,4 +1,4 @@
-package com.company;
+package com.ekrotenko;
 
 /**
  * Created by Eugene on 26.11.2016.

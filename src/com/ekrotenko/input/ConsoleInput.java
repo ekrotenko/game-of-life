@@ -1,10 +1,10 @@
-package com.company.input;
+package com.ekrotenko.input;
 
-import com.company.Core.ClosedField;
-import com.company.Core.Field;
-import com.company.Core.FieldStrategy;
-import com.company.Core.OpenedField;
-import com.company.patterns.Patterns;
+import com.ekrotenko.Core.ClosedField;
+import com.ekrotenko.Core.Field;
+import com.ekrotenko.Core.FieldStrategy;
+import com.ekrotenko.Core.OpenedField;
+import com.ekrotenko.patterns.Patterns;
 
 import java.util.Scanner;
 

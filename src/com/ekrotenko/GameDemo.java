@@ -1,10 +1,9 @@
-package com.company;
+package com.ekrotenko;
 
-import com.company.input.ConsoleInput;
-import com.company.input.ConstantInput;
-import com.company.input.FieldInput;
-import com.company.output.ConsoleOutput;
-import com.company.output.FieldOutput;
+import com.ekrotenko.input.ConstantInput;
+import com.ekrotenko.input.FieldInput;
+import com.ekrotenko.output.ConsoleOutput;
+import com.ekrotenko.output.FieldOutput;
 
 public class GameDemo {
 

@@ -1,9 +1,9 @@
-package com.company.input;
+package com.ekrotenko.input;
 
-import com.company.Core.ClosedField;
-import com.company.Core.Field;
-import com.company.Core.FieldStrategy;
-import com.company.Core.OpenedField;
+import com.ekrotenko.Core.ClosedField;
+import com.ekrotenko.Core.Field;
+import com.ekrotenko.Core.FieldStrategy;
+import com.ekrotenko.Core.OpenedField;
 
 /**
  * Created by Eugene on 15.12.2016.

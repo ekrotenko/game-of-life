@@ -1,4 +1,4 @@
-package com.company.Core;
+package com.ekrotenko.Core;
 
 /**
  * Created by Eugene on 16.12.2016.

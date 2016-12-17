@@ -1,6 +1,4 @@
-package com.company.patterns;
-
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+package com.ekrotenko.patterns;
 
 /**
  * Created by Eugene on 15.12.2016.

@@ -1,6 +1,6 @@
-package com.company.output;
+package com.ekrotenko.output;
 
-import com.company.Core.Field;
+import com.ekrotenko.Core.Field;
 
 /**
  * Created by Eugene on 15.12.2016.

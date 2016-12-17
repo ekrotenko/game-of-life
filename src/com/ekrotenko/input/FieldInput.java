@@ -1,6 +1,6 @@
-package com.company.input;
+package com.ekrotenko.input;
 
-import com.company.Core.Field;
+import com.ekrotenko.Core.Field;
 
 /**
  * Created by Eugene on 15.12.2016.

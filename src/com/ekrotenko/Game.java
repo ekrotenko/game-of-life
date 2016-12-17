@@ -1,8 +1,8 @@
-package com.company;
+package com.ekrotenko;
 
-import com.company.Core.Field;
-import com.company.input.FieldInput;
-import com.company.output.FieldOutput;
+import com.ekrotenko.Core.Field;
+import com.ekrotenko.input.FieldInput;
+import com.ekrotenko.output.FieldOutput;
 
 /**
  * Created by Eugene on 15.12.2016.

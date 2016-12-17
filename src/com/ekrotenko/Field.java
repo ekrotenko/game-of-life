@@ -1,4 +1,4 @@
-package com.company.Core;
+package com.ekrotenko;
 
 /**
  * Created by Eugene on 26.11.2016.
@@ -8,15 +8,13 @@ public class Field {
     private int colSize;
     private boolean[][] fieldArray;
     private boolean[][] tmpFieldArray;
-    //private boolean isClosed;
-    private FieldStrategy isClosed;
 
-    public Field(int size, FieldStrategy isClosed){
-        this(size,size, isClosed);
+    public Field(int size){
+        this(size,size);
     }
 
-    public Field(boolean[][] startField, FieldStrategy isClosed){
-        this(startField.length, startField[startField.length-1].length, isClosed);
+    public Field(boolean[][] startField){
+        this(startField.length, startField[startField.length-1].length);
         for(int i = 0; i<this.colSize; i++){
             for(int j =0; j<this.rowSize; j++){
                 fieldArray[i][j] = startField[i][j];
@@ -24,15 +22,22 @@ public class Field {
         }
     }
 
-    public Field(int colSize, int rowSize, FieldStrategy isClosed){
+    public Field(int colSize, int rowSize){
         this.rowSize=rowSize;
         this.colSize=colSize;
         this.fieldArray=new boolean[colSize][rowSize];
         this.tmpFieldArray=new boolean[colSize][rowSize];
-        this.isClosed = isClosed;
     }
 
-
+    private int getIndex(int ind, int size){
+        if(ind<0){
+            return size-1;
+        }
+        else if(ind>=size){
+            return 0;
+        }
+        else return ind;
+    }
 
     public int getRowSize(){
         return this.rowSize;
@@ -46,16 +51,13 @@ public class Field {
         return this.fieldArray[rowId][colId];
     }
 
-    public int getNeighborsCount(int rowID, int columnID) {
-
+    private int returnLiveCellsCount(int rowID, int columnID) {
         int count = 0;
         int rBorInd, cBorInd;
         for (int i = rowID - 1; i <= rowID + 1; i++) {
             for (int j = columnID - 1; j <= columnID + 1; j++) {
-                rBorInd= isClosed.getIndex(i,this.colSize);
-                cBorInd= isClosed.getIndex(j,this.rowSize); //cBorInd= getIndex(j,fieldArray[rBorInd].length);
-                if(rBorInd<0 || cBorInd<0)
-                    continue;
+                rBorInd= getIndex(i,fieldArray.length);
+                cBorInd= getIndex(j,fieldArray[rBorInd].length);
                 if (!(rBorInd == rowID && cBorInd == columnID) && fieldArray[rBorInd][cBorInd]) {
                     count++;
                 }
@@ -65,7 +67,7 @@ public class Field {
     }
 
     private void changeStateOfCell(int rowID, int columnID, boolean[][] tmpField) {
-        int neibors = getNeighborsCount(rowID, columnID);
+        int neibors = returnLiveCellsCount(rowID, columnID);
         tmpField[rowID][columnID]=((fieldArray[rowID][columnID]&&neibors==2)||neibors==3);
         //tmpField[rowID][columnID]=(field[rowID][columnID]&&!(neibors < 2 || neibors > 3 ))||(!field[rowID][columnID]&&neibors == 3);
         /*if (field[rowID][columnID]) {
