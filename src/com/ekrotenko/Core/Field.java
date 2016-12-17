@@ -46,7 +46,7 @@ public class Field {
         return this.fieldArray[rowId][colId];
     }
 
-    public int getNeighborsCount(int rowID, int columnID) {
+    private int getNeighborsCount(int rowID, int columnID) {
 
         int count = 0;
         int rBorInd, cBorInd;
