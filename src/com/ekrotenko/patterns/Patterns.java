@@ -30,34 +30,34 @@ public class Patterns {
 
     private static boolean[][] getSpaceShip(){
         startField = new boolean[20][20];
-        startField[4][5] = true;
         startField[4][6] = true;
-        startField[4][9] = true;
+        startField[4][7] = true;
         startField[4][10] = true;
-        startField[5][7] = true;
+        startField[4][11] = true;
         startField[5][8] = true;
-        startField[6][7] = true;
+        startField[5][9] = true;
         startField[6][8] = true;
-        startField[7][4] = true;
-        startField[7][6] = true;
-        startField[7][9] = true;
-        startField[7][11] = true;
-        startField[8][4] = true;
-        startField[8][11] = true;
-        startField[10][4] = true;
-        startField[10][11] = true;
-        startField[11][5] = true;
+        startField[6][9] = true;
+        startField[7][5] = true;
+        startField[7][7] = true;
+        startField[7][10] = true;
+        startField[7][12] = true;
+        startField[8][5] = true;
+        startField[8][12] = true;
+        startField[10][5] = true;
+        startField[10][12] = true;
         startField[11][6] = true;
-        startField[11][9] = true;
+        startField[11][7] = true;
         startField[11][10] = true;
-        startField[12][6] = true;
+        startField[11][11] = true;
         startField[12][7] = true;
         startField[12][8] = true;
         startField[12][9] = true;
-        startField[14][7] = true;
+        startField[12][10] = true;
         startField[14][8] = true;
-        startField[15][7] = true;
+        startField[14][9] = true;
         startField[15][8] = true;
+        startField[15][9] = true;
         return startField;
     }
 
