@@ -12,10 +12,7 @@ public class GameDemo {
         FieldInput input = new ConstantInput(20,15,true);
         //FieldInput input = new ConsoleInput(true);
         FieldOutput output = new ConsoleOutput();
-
         Game game = new Game(input, output);
-
         game.run();
-
     }
 }
