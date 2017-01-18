@@ -1,5 +1,11 @@
 package com.ekrotenko.patterns;
 
+import com.ekrotenko.Core.Exceptions.FieldInputException;
+import com.ekrotenko.input.FileInput;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import java.rmi.NotBoundException;
+
 /**
  * Created by Eugene on 15.12.2016.
  */
@@ -61,7 +67,7 @@ public class Patterns {
         return startField;
     }
 
-    public static boolean[][] getStartField(int id){
+    public static boolean[][] getStartField(int id) throws FieldInputException{
 
             switch (id) {
                 case 1:
@@ -70,7 +76,7 @@ public class Patterns {
                     return getStar();
                 case 3:
                     return getSpaceShip();
-                default: return new boolean[10][10];
+                default: throw new FieldInputException(new NotBoundException());
             }
     }
 }

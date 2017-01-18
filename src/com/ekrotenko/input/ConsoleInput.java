@@ -1,6 +1,7 @@
 package com.ekrotenko.input;
 
 import com.ekrotenko.Core.ClosedField;
+import com.ekrotenko.Core.Exceptions.FieldInputException;
 import com.ekrotenko.Core.Field;
 import com.ekrotenko.Core.FieldStrategy;
 import com.ekrotenko.Core.OpenedField;
@@ -29,9 +30,18 @@ public class ConsoleInput implements FieldInput {
         System.out.println("3 - Space Ship");
         System.out.println("\n> ");
 
-        boolean[][] startField = Patterns.getStartField(Integer.parseInt(console.nextLine()));
         FieldStrategy str = (isClosed)? new ClosedField(): new OpenedField();
+        try {
+            boolean[][] startField = Patterns.getStartField(Integer.parseInt(console.nextLine()));
+            return new Field(startField, str);
+        } catch (FieldInputException ex)
+        {
+            ex.printStackTrace();
+            return new Field(1, str);
+        }
 
-        return new Field(startField, str);
+
     }
+
+
 }
