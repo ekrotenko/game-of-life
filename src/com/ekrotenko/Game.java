@@ -1,7 +1,10 @@
 package com.ekrotenko;
 
+import com.ekrotenko.Core.Exceptions.FieldInputException;
+import com.ekrotenko.Core.Exceptions.FieldOutputException;
 import com.ekrotenko.Core.Field;
 import com.ekrotenko.input.FieldInput;
+import com.ekrotenko.output.ConsoleOutput;
 import com.ekrotenko.output.FieldOutput;
 
 /**
@@ -17,16 +20,29 @@ public class Game {
     }
 
     public void run(){
-        Field fieldToOut = input.getField();
+        int i = 0;
+        try {
+            Field fieldToOut = input.getField();
+            while (i<15) {
+                try{
+                    output.sendField(fieldToOut);
+                }
+                catch (FieldOutputException ex){
+                    ex.printStackTrace();
+                }
+                fieldToOut.regenerateField();
 
-        while (true) {
-            output.sendField(fieldToOut);
-            fieldToOut.regenerateField();
-            try{
-                Thread.sleep(300);
+                if(output instanceof ConsoleOutput) {
+                    try {
+                        Thread.sleep(300);
+                    } catch (InterruptedException ex) {
+                    }
+                }
+                i++;
             }
-            catch(InterruptedException ex) {}
-
+        }
+        catch (FieldInputException ex){
+            ex.printStackTrace();
         }
 
     }
