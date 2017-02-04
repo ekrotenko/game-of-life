@@ -1,13 +1,13 @@
 package com.ekrotenko.input;
 
-import com.ekrotenko.Core.ClosedField;
+import com.ekrotenko.Core.*;
 import com.ekrotenko.Core.Exceptions.FieldInputException;
-import com.ekrotenko.Core.Field;
-import com.ekrotenko.Core.FieldStrategy;
-import com.ekrotenko.Core.OpenedField;
 import com.ekrotenko.patterns.Patterns;
 
+import java.rmi.NotBoundException;
 import java.util.Scanner;
+
+import static com.ekrotenko.patterns.Patterns.getSpaceShip;
 
 /**
  * Created by Eugene on 15.12.2016.
@@ -17,13 +17,14 @@ public class ConsoleInput implements FieldInput {
     private int rowSize;
     private final Scanner console = new Scanner(System.in);
     private boolean isClosed;
+    private PatternType pattern;
 
     public ConsoleInput(boolean isClosed) {
         this.isClosed = isClosed;
     }
 
     @Override
-    public Field getField() {
+    public Field getField() throws FieldInputException{
         System.out.println("Select pattern:"); // \n означает новую строку
         System.out.println("1 - Planer");
         System.out.println("2 - Star");
@@ -31,17 +32,24 @@ public class ConsoleInput implements FieldInput {
         System.out.println("\n> ");
 
         FieldStrategy str = (isClosed)? new ClosedField(): new OpenedField();
-        try {
-            boolean[][] startField = Patterns.getStartField(Integer.parseInt(console.nextLine()));
-            return new Field(startField, str);
-        } catch (FieldInputException ex)
-        {
-            ex.printStackTrace();
-            return new Field(1, str);
-        }
-
-
+        boolean[][] startField = getStartField(Integer.parseInt(console.nextLine()));
+        return new Field(startField, str);
     }
 
+    public boolean[][] getStartField(int id) throws FieldInputException{
+
+        switch (id) {
+            case 1:
+                pattern=PatternType.PLANER;
+                return Patterns.getPlaner();
+            case 2:
+                pattern=PatternType.STAR;
+                return Patterns.getStar();
+            case 3:
+                pattern=PatternType.SPACESHIP;
+                return Patterns.getSpaceShip();
+            default: throw new FieldInputException(new NotBoundException());
+        }
+    }
 
 }

@@ -1,6 +1,7 @@
 package com.ekrotenko.patterns;
 
 import com.ekrotenko.Core.Exceptions.FieldInputException;
+import com.ekrotenko.Core.PatternType;
 import com.ekrotenko.input.FileInput;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -11,9 +12,9 @@ import java.rmi.NotBoundException;
  */
 public class Patterns {
     private static boolean[][] startField;
+    public static PatternType selectedPattern=PatternType.NOTSELECTED;
 
-
-    private static boolean[][] getPlaner(){
+    public static boolean[][] getPlaner(){
         startField = new boolean[20][20];
         startField[0][1] = true;
         startField[1][2] = true;
@@ -24,7 +25,7 @@ public class Patterns {
     }
 
 
-    private static boolean[][] getStar(){
+    public static boolean[][] getStar(){
         startField = new boolean[20][20];
         startField[10][11] = true;
         startField[10][10] = true;
@@ -34,7 +35,7 @@ public class Patterns {
         return startField;
     }
 
-    private static boolean[][] getSpaceShip(){
+    public static boolean[][] getSpaceShip(){
         startField = new boolean[20][20];
         startField[4][6] = true;
         startField[4][7] = true;
@@ -67,16 +68,5 @@ public class Patterns {
         return startField;
     }
 
-    public static boolean[][] getStartField(int id) throws FieldInputException{
 
-            switch (id) {
-                case 1:
-                    return getPlaner();
-                case 2:
-                    return getStar();
-                case 3:
-                    return getSpaceShip();
-                default: throw new FieldInputException(new NotBoundException());
-            }
-    }
 }
