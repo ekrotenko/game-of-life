@@ -8,15 +8,15 @@ public class Field {
     private int colSize;
     private boolean[][] fieldArray;
     private boolean[][] tmpFieldArray;
-    //private boolean isClosed;
     private FieldStrategy isClosed;
+    private PatternType pattern = PatternType.NOTSELECTED;
 
-    public Field(int size, FieldStrategy isClosed){
-        this(size,size, isClosed);
+    public Field(int size, FieldStrategy isClosed, PatternType pattern){
+        this(size,size, isClosed, pattern);
     }
 
-    public Field(boolean[][] startField, FieldStrategy isClosed){
-        this(startField.length, startField[startField.length-1].length, isClosed);
+    public Field(boolean[][] startField, FieldStrategy isClosed, PatternType pattern){
+        this(startField.length, startField[startField.length-1].length, isClosed, pattern);
         for(int i = 0; i<this.colSize; i++){
             for(int j =0; j<this.rowSize; j++){
                 fieldArray[i][j] = startField[i][j];
@@ -24,15 +24,18 @@ public class Field {
         }
     }
 
-    public Field(int colSize, int rowSize, FieldStrategy isClosed){
+    public Field(int colSize, int rowSize, FieldStrategy isClosed, PatternType pattern){
         this.rowSize=rowSize;
         this.colSize=colSize;
         this.fieldArray=new boolean[colSize][rowSize];
         this.tmpFieldArray=new boolean[colSize][rowSize];
         this.isClosed = isClosed;
+        this.pattern = pattern;
     }
 
-
+    public PatternType getPatternType(){
+        return this.pattern;
+    }
 
     public int getRowSize(){
         return this.rowSize;
@@ -47,7 +50,6 @@ public class Field {
     }
 
     private int getNeighborsCount(int rowID, int columnID) {
-
         int count = 0;
         int rBorInd, cBorInd;
         for (int i = rowID - 1; i <= rowID + 1; i++) {
@@ -75,7 +77,6 @@ public class Field {
         } else {
             if (neibors == 3)
                 tmpField[rowID][columnID] = true;
-
         }*/
     }
 

@@ -1,9 +1,6 @@
 package com.ekrotenko.input;
 
-import com.ekrotenko.Core.ClosedField;
-import com.ekrotenko.Core.Field;
-import com.ekrotenko.Core.FieldStrategy;
-import com.ekrotenko.Core.OpenedField;
+import com.ekrotenko.Core.*;
 
 /**
  * Created by Eugene on 15.12.2016.
@@ -33,6 +30,6 @@ public class ConstantInput implements FieldInput {
         startField[2][0] = true;
         startField[2][1] = true;
         FieldStrategy str = (isClosed)? new ClosedField(): new OpenedField();
-        return new Field(startField, str);
+        return new Field(startField, str, PatternType.NOTSELECTED);
     }
 }

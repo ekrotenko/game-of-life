@@ -19,7 +19,7 @@ public class FileOutput implements FieldOutput {
     public void sendField(Field field) throws FieldOutputException {
         final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy_HH-mm");
         final String outFolderName = "OutputFiles";
-        final String outFileName = Patterns.selectedPattern.toString()+"_"+LocalDateTime.now().format(formatter).toString()+".txt";
+        final String outFileName = field.getPatternType().toString()+"_"+LocalDateTime.now().format(formatter).toString()+".txt";
         final String outFilePath = outFolderName+"\\"+outFileName;
         File newFile = new File(outFilePath);
         File dir = new File(outFolderName);
@@ -35,10 +35,8 @@ public class FileOutput implements FieldOutput {
         try(FileWriter writer = new FileWriter(newFile, true)){
             for (int rowId =0; rowId<field.getColumnSize(); rowId++) {
                 for (int colId =0; colId<field.getRowSize(); colId++) {
-                    if (field.getState(rowId,colId)) {
-                        writer.append("x ");
-                    } else
-                        writer.append(". ");
+                    String cell = (field.getState(rowId,colId))? "x ": ". ";
+                    writer.append(cell);
                 }
                 writer.append("\n");
             }
