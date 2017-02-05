@@ -4,7 +4,6 @@ import com.ekrotenko.Core.*;
 import com.ekrotenko.Core.Exceptions.FieldInputException;
 import com.ekrotenko.patterns.Patterns;
 
-import java.rmi.NotBoundException;
 
 /**
  * Created by Eugene on 15.12.2016.
@@ -37,7 +36,7 @@ public class ConsoleInput implements FieldInput {
             case 3:
                 pattern=PatternType.SPACESHIP;
                 return Patterns.getSpaceShip();
-            default: throw new FieldInputException(new NotBoundException());
+            default: throw new FieldInputException("Invalid pattern Id selected");
         }
     }
 

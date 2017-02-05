@@ -1,11 +1,8 @@
 package com.ekrotenko.input;
-
 import com.ekrotenko.Core.*;
 import com.ekrotenko.Core.Exceptions.FieldInputException;
 import com.ekrotenko.patterns.Patterns;
-
 import java.io.*;
-import java.rmi.NotBoundException;
 import java.util.*;
 
 /**
@@ -42,7 +39,7 @@ public class FileInput implements FieldInput {
             case 3:
                 this.pattern = PatternType.SPACESHIP;
                 return "src\\com\\ekrotenko\\patterns\\FilePatterns\\SpaceShip.txt";
-            default: throw new FieldInputException("Invalid selected pattern id");
+            default: throw new FieldInputException("Invalid pattern Id selected ");
         }
     }
 
