@@ -6,13 +6,24 @@ import com.ekrotenko.input.FileInput;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.rmi.NotBoundException;
+import java.util.Scanner;
 
 /**
  * Created by Eugene on 15.12.2016.
  */
 public class Patterns {
     private static boolean[][] startField;
-    public static PatternType selectedPattern=PatternType.NOTSELECTED;
+    private static final Scanner console = new Scanner(System.in);
+    //public static PatternType selectedPattern=PatternType.NOTSELECTED;
+
+    public static int getSelectedPatternId(){
+        System.out.println("Select pattern:"); // \n означает новую строку
+        System.out.println("1 - Planer");
+        System.out.println("2 - Star");
+        System.out.println("3 - Space Ship");
+        System.out.println("\n> ");
+        return Integer.parseInt(console.nextLine());
+    }
 
     public static boolean[][] getPlaner(){
         startField = new boolean[20][20];
